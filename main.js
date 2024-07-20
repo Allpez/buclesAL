@@ -40,32 +40,29 @@ Ejercicios*/
 /* 1. Realizar un programa que permita el ingreso de un numero y muestre su tabla de
 multiplicar (Los primeros 10 multiplos).*/
 
-let numero1 = parseInt((prompt("ingrese un número")))
+// let numero1 = parseInt((prompt("ingrese un número")))
 
-for (let x = 1; x < 11; x = x + 1){
-    console.log(numero1 * x)
-}
+// for (let x = 1; x < 11; x = x + 1){
+//     console.log(numero1 * x)
+// }
 
 
 /* 2. Realizar un programa que permita el ingreso de numeros los cuales se tienen que ir
 acumulando. El ingreso de datos terminara cuando el usuario ingrese un valor 0.*/5
 
+// let numero2
+// let suma2 = 0
 
-
-let numero2
-let suma2 = 0
-
-do {
-    numero2 = parseInt(prompt('Ingrese un número para acumular el resultado, ingrese "0" para  finalizar el programa'))
+// do {
+//     numero2 = parseInt(prompt('Ingrese un número para acumular el resultado (ingrese "0" para  finalizar el programa.)'))
     
-    while (isNaN(numero2)){
-        numero2 = parseInt(prompt("Por favor ingrese un valor numérico valido"))
-    }
-    suma2 += numero2
-}while (numero2 !== 0)
+//     while (isNaN(numero2)){
+//         numero2 = parseInt(prompt("Por favor ingrese un valor numérico valido"))
+//     }
+//     suma2 += numero2
+// }while (numero2 !== 0)
 
-console.log("El acumulado de los números ingresados es: " + suma2);
-
+// console.log("El acumulado de los números ingresados es: " + suma2);
 
 
 /* 3. Realizar en juego de adivinar el numero del los ejercicios del tema anterior, en una
@@ -75,7 +72,28 @@ valor es menor al numero secreto, avisarle al usuario lo sucedido y pedirle
 nuevamente el ingreso de otro numero, realizar la misma accion pero en lugar de
 cuando es menor, si es que el numero ingresado es mayor. Asi sucesivamente hasta
 que el usuario adivine el numero secreto. Por ultimo mostrar un mensaje de
-felicitaciones y decirle en cuantos intentos lo ha realizado. */
+felicitaciones y decirle en cuantos intentos lo ha realizado.*/
+
+// alert("Hagamos un juego, ¿puedes adivinar un número entre 1 y 100?")
+
+// function adivinaElNumero(numero3) {
+//     let incognita = Math.floor(Math.random()*100)+1
+//     let intentos = 0
+//     while (incognita !== numero3) {
+
+//         if (isNaN(numero3) || numero3 < 1 || numero3 > 100){
+//             numero3 = parseInt(prompt('El numero ingresado "NO" es valido. Ingrese un numero del 1 al 100.'))
+//          }else if (numero3 < incognita){
+//             numero3 = parseInt(prompt('El numero ingresado es "MENOR", vuelve a intentarlo.'))
+//         }else if (numero3 > incognita){
+//             numero3 = parseInt(prompt('El numero ingresado es "MAYOR", vuelve a intentarlo.'))
+//         }
+//         intentos++ 
+//     }
+//     console.log("¡Ganaste..!!! Felicidades el número correcto es el: " + incognita + " y lo haz adivinado en " + intentos + " intentos.");
+// }
+
+// console.log(adivinaElNumero(parseInt(prompt("ingresa un numero del 1 al 100"))));
 
 
 /* 4. Realizar un programa que permita decir si un numero es primo. Un numero es primo
@@ -83,6 +101,29 @@ si solo es divisible por el valor 1 y por si mismo. Ayuda: Usar la operacion de 
 Los numeros solo poseen divisores hasta la mitad del valor del mismo. Ej: 50 tiene
 como divisores 1, 2, 5, 10 y 25. No es primo. Con tener mas de 2 divisores el
 numero ya no es primo. */
+
+
+function numeroPrimo (numero4){
+
+
+    while (isNaN(numero4) || numero4 <= 1){
+        numero4 = parseInt(prompt('El valor ingresado "NO" es valido. Ingrese un número'))
+    }
+
+    for ( let i = 2; i <= numero4 / 2; i++){
+
+        if(numero4 % i === 0  ){
+            console.log('El numero ' + numero4 + ' "NO" es Primo')
+            return
+        }
+    }
+    console.log('El numero ' + numero4 + ' "SI" es Primo')    
+}
+
+numeroPrimo(prompt("Ingrese un numero para determinar si es primo"))
+
+
+
 
 
 /* 5. Realizar un programa que permita dado un numero, mostrar todos sus divisores. */

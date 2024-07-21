@@ -225,14 +225,64 @@
 // numeros pares por un lado y los impares por otro, el ingreso de dato finaliza cuando
 // el usuario ingresa un 0. */
 
+// let numeros10
+// let sumaPares = 0
+// let sumaImpares = 0
+
+// function paresEImpares(){
+
+//     do {
+//         numeros10 = parseInt(prompt('Ingrese un número para acumular el resultado de los números PARES e IMPARES (ingrese "0" para  finalizar el programa.)'))
+        
+//         while (isNaN(numeros10)){
+//             numeros10 = parseInt(prompt("Por favor ingrese un valor numérico valido"))
+//         }
+//             if (numeros10 % 2 === 0){
+//                 sumaPares += numeros10
+//             }else{
+//                 sumaImpares += numeros10
+//             }
+
+//     }while (numeros10 !== 0)
+        
+//     console.log("La suma de los numeros PARES es de: " + sumaPares);
+//     console.log("La suma de los numeros IMPARES es de: " + sumaImpares);
+        
+// }
+
+// paresEImpares()
 
 
 // /* 11. Dado un array de 10 numeros, realizar un programa que imprima por pantalla el
 // numero mas grande. */
 
+// let numeros11 = [8, 16, 34, 41, 95, 67, 27, 88, 59, 72]
+
+// let numeroMayor = numeros11[0]
+
+// for (let i = 1; i < numeros11.length; i++){
+//     if (numeros11[i] > numeroMayor){
+//         numeroMayor = numeros11[i]
+//     }
+// }
+
+// console.log("El numero mas grande del array dado es: " + numeroMayor);
+
 
 // /* 12. Dado un array de 10 numeros, realizar un programa que imprima por pantalla el
 // numero mas chico. */
+
+// let numeros12 = [8, 16, 34, 41, 95, 67, 27, 88, 59, 72]
+
+// let numeroMenor = numeros12[0]
+
+// for (let i = 1; i < numeros12.length; i++){
+//     if (numeros12[i] < numeroMenor){
+//         numeroMenor = numeros12[i]
+//     }
+// }
+
+// console.log("El numero mas chico del array dado es: " + numeroMenor);
 
 
 // /* 13. Realizar un programa que permita jugar a piedra papel o tijeras, se debera poder
@@ -241,37 +291,128 @@
 // un empate. Caso contrario mostrar un mensaje con el nombre de la persona
 // ganadora. */
 
+// Función para obtener la opción válida elegida por un jugador
+function obtenerOpcionValida() {
+    let opcion = prompt("Elige piedra, papel o tijeras:").toLowerCase();
+    while (opcion !== 'piedra' && opcion !== 'papel' && opcion !== 'tijeras') {
+        opcion = prompt("Opción no válida. Elige piedra, papel o tijeras:").toLowerCase();
+    }
+    return opcion;
+}
+
+// Función para determinar quién gana un turno
+function determinarGanador(jugador1, jugador2) {
+    if (jugador1 === jugador2) {
+        return 'empate';
+    } else if (
+        (jugador1 === 'piedra' && jugador2 === 'tijeras') ||
+        (jugador1 === 'papel' && jugador2 === 'piedra') ||
+        (jugador1 === 'tijeras' && jugador2 === 'papel')
+    ) {
+        return 'jugador1';
+    } else {
+        return 'jugador2';
+    }
+}
+
+// Función principal del juego
+function jugarPiedraPapelTijeras() {
+    let nombreJugador1 = prompt("Ingrese el nombre del jugador 1:");
+    let nombreJugador2 = prompt("Ingrese el nombre del jugador 2:");
+
+    let continuar = true;
+    while (continuar) {
+        let opcionJugador1 = obtenerOpcionValida();
+        let opcionJugador2 = obtenerOpcionValida();
+
+        let resultado = determinarGanador(opcionJugador1, opcionJugador2);
+
+        if (resultado === 'empate') {
+            alert("Empate! Vuelvan a intentarlo.");
+        } else {
+            let mensaje = "";
+            if (resultado === 'jugador1') {
+                mensaje = `¡${nombreJugador1} gana esta ronda!`;
+            } else {
+                mensaje = `¡${nombreJugador2} gana esta ronda!`;
+            }
+            alert(mensaje);
+            continuar = false;
+        }
+    }
+
+    let jugarOtraVez = confirm("¿Quieren jugar otra vez?");
+    if (jugarOtraVez) {
+        jugarPiedraPapelTijeras();
+    } else {
+        alert("Gracias por jugar!");
+    }
+}
+
+// Iniciar el juego
+jugarPiedraPapelTijeras();
+
+
+
 
 // /* 14. Realizar un programa que imprima por consola un triangulo de 5 asteriscos de lado.*/
+
+// function triangulo() {
+//     let fila = '';
+//     const lado = 5;
+
+//     for (let i = 1; i <= lado; i++) {
+//         fila += '* ';
+//         console.log(fila);
+//     }
+// }
+
+// triangulo();
 
 
 // /* 15. Realizar un programa que imprima por consola un triangulo de 5 asteriscos de lado
 // pero invertido. */
 
+// function trianguloInvertido() {
+//     const lado = 5;
+
+//     for (let i = lado; i >= 1; i--) {
+//         let fila = '';
+//         for (let j = 1; j <= i; j++) {
+//             fila += '* ';
+//         }
+//         console.log(fila);
+//     }
+// }
+
+// trianguloInvertido();
+
 
 // /* 16. Dado un array de 10 numeros desordenados, realizar un programa que imprima por
 // pantalla el array ordenado. (NO USAR SORT, solo ciclos FOR) */
 
+// let arrayDesordenado = [8, 16, 34, 41, 95, 67, 27, 88, 59, 72]
 
 
+// function ordenar (array){
+//     let longArray = array.length
 
+//     for (let i = 0; i < longArray - 1; i++ ) {
+//         let minIdx = i
+//         for (let j = i + 1; j < longArray; j++) {
+//             if (array[j] < array[minIdx]) {
+//                 minIdx = j
+//             }
+//         }
+//         if (minIdx !== i) {
+//             let temp = array[minIdx]
+//             array[minIdx] = array[i]
+//             array[i] = temp
+//         }
+//     }
+//     return array
+// }
 
+// let arrayOrdenado = ordenar(arrayDesordenado)
 
-// // let i = 0
-// // while (i < 20) {
-// //     console.log(i++);
-// // }
-
-// // for( let i = 0; i < 20; i += 2){
-// //     console.log( i );
-// // }
-
-
-// // var miArreglo = [4, 6, 8, 2]
-// // var total = 0
-
-// // for (let i = 0; i <= miArreglo.length; i++) {
-// //     total += miArreglo[i]  
-// // }
-
-// // console.log(total);
+// console.log("arrayOrdenado:", arrayDesordenado);
